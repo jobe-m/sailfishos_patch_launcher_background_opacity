@@ -1,0 +1,40 @@
+--- /usr/share/lipstick-jolla-home-qt5/launcher/LauncherView.qml
++++ /usr/share/lipstick-jolla-home-qt5/launcher/LauncherView.qml
+@@ -16,7 +16,8 @@
+
+     children: Rectangle {
+         z: -1
+-        color: "black"
++        color: Theme.highlightDimmerColor
++        opacity: 0.8
+         anchors.fill: parent
+     }
+
+--- /usr/share/lipstick-jolla-home-qt5/compositor.qml
++++ /usr/share/lipstick-jolla-home-qt5/compositor.qml
+@@ -585,7 +585,6 @@
+                         || (!root.deviceIsLocked && lockScreenLayer.exposed)
+                         || (root.deviceIsLocked && homeLayerItem.currentItem.maximized)
+             childrenOpaque: appLayerItem.opaque
+-                        || launcherLayerItem.opaque
+                         || powerKeyLayerItem.opaque
+                         || alarmLayerItem.opaque
+                         || dialogLayerItem.opaque
+@@ -662,8 +661,7 @@
+                 id: appLayerItem
+
+                 background: appBgContainer
+-                peekedAt: !launcherLayerItem.opaque
+-                            && !powerKeyLayerItem.opaque
++                peekedAt: !powerKeyLayerItem.opaque
+                             && !dialogLayerItem.opaque
+                             && !alarmLayerItem.opaque
+                             && (root.showApplicationOverLockscreen || !lockScreenLayerItem.opaque)
+@@ -721,7 +719,6 @@
+                         peekedAt: (root.deviceIsLocked && !peekLayer.opaque && peekLayer.exposed)
+                                     || (root.screenIsLocked
+                                             && !showApplicationOverLockscreen
+-                                            && !launcherLayerItem.opaque
+                                             && !powerKeyLayerItem.opaque
+                                             && !dialogLayerItem.opaque
+                                             && !alarmLayerItem.opaque
