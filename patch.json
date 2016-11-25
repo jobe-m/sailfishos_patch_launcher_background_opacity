@@ -1,0 +1,8 @@
+{
+    "name": "Launcher background opacity",
+    "description": "This patch sets launcher background opacity to 0.8 and changes black color to Theme highlightDimmerColor.",
+    "category": "homescreen",
+    "infos": {
+        "maintainer": "Marko Koschak"
+    }
+}
